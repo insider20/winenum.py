@@ -8,7 +8,7 @@ output = []
 #filter_object = []
 
 #Run nmap for port 445 via shell and put output into an array
-fourfourfive = sp.check_output("for i in $(nmap -4 -n -p 445 -iL ranges.txt | grep report | grep -E '132|133|134' | awk '{print $5}'); " "do echo $i ; done", shell=True)
+fourfourfive = sp.check_output("for i in $(nmap -4 -n -p 445 -iL ranges.txt | grep report | awk '{print $5}'); " "do echo $i ; done", shell=True)
 
 #run cme smb against IPs found through nmap command and save to array
 for x in fourfourfive.splitlines():
